@@ -20,8 +20,8 @@ namespace tdd_oop_concrete_dependency_injection.CSharp.Test
         {
             PowerSupply myPsu = new PowerSupply();
             Computer myPc = new Computer(myPsu);
-
-            myPc.installGame("Final Fantasy XI");
+            Game newGame = new Game("Final Fantasy XI")
+            myPc.installGame(newGame);
 
             int timesFFXInstalled = 0;
             for(int i = 0; i < myPc.installedGames.Count; i++) {
