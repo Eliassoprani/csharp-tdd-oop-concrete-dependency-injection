@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,10 +12,17 @@ namespace tdd_oop_concrete_dependency_injection.CSharp.Main
         public List<Game> installedGames = new List<Game>();
         public PowerSupply powerSupply;
 
-        public Computer(PowerSupply powerSupply) {
+        public Computer(PowerSupply powerSupply)
+        {
+                this.powerSupply = powerSupply;
+        }
+        public Computer(PowerSupply powerSupply, List<Game> preInstalledGames) {
             this.powerSupply = powerSupply;
-            installGame("Dwarf Fortress");
-            installGame("Baldur's Gate");
+            foreach (Game game in preInstalledGames)
+            {
+                installGame(game);
+            }
+            
         }
 
         public void turnOn() {
